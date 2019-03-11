@@ -11,6 +11,13 @@
 |
 */
 
+Route::get('/beer', function () {
+
+    $beer = DB::table('beers')->get();
+
+    return view('beer', ['beer' => $beer]);
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
