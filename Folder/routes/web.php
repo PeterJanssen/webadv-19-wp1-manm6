@@ -19,5 +19,43 @@ Route::get('/beer', function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+})->name('home');
+
+Route::group(['prefix' => 'beer'], function () {
+    Route::get('', function () {
+        return view('beer.summaryData.index');
+    })->name('summaryData.index');
+
+    Route::get('add', function () {
+        return view('beer.addData.index');
+    })->name('addData.index');
+
+    Route::get('delete', function () {
+        return view('beer.deleteData.index');
+    })->name('deleteData.index');
+
+    //Routes to use when updating a beer
+    Route::get('Update existing beers', [
+        'uses' => 'BeerUpdateController@getBeersToUpdate',
+        'as' => 'updateData.index'
+    ]);
+
+    Route::get('Update existing beer/{id}', [
+        'uses' => 'BeerUpdateController@getBeerToEdit',
+        'as' => 'updateData.updateBeer'
+    ]);
+
+    Route::post('Posting new beer', [
+        'uses' => 'BeerUpdateController@postUpdatedBeer',
+        'as' => 'Confirm update'
+    ]);
+    //End of routes to use when updating a beer
 });
+
+
+
+
+
+
+
