@@ -9,12 +9,21 @@
         </div>
     @endif
     <h1>Existing beers in the database</h1>
-    @foreach($beers as $beer)
-        <div class="row">
-            <div class="col-md-12">
-                <p><strong>{{ $beer ->name }}</strong>
-                    <a href="{{ route('updateData.updateBeer', ['id' => $beer->id]) }}">Edit</a>
+    <div class="row">
+        <div class="col-md-12">
+            @foreach($beers as $beer)
+                <figure class="col-md-4">
+                    <img class="img-fluid" width="300px" height="275px" src="data:image/jpg;base64,{{$beer->image_file}}" alt={{ $beer->name }}>
+                    <p><strong>{{ $beer ->name }}</strong>
+                        <a href="{{ route('updateData.updateBeer', ['id' => $beer->id]) }}">Edit</a>
+                </figure>
+            @endforeach
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    {{ $beers->links() }}
+                </div>
             </div>
         </div>
-    @endforeach
+
+    </div>
 @endsection

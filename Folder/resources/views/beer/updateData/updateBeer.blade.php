@@ -30,7 +30,7 @@
                     <input type="text" class="form-control" id="alcohol" name="alcohol"
                            value="{{ $beer->alcohol }}">
                     <label for="image">Beer image</label>
-                    <input data-preview="#preview" name="image" type="file" id="image"
+                    <input data-preview="#preview" name="image_file" type="file" id="image_file"
                            onchange="previewUploadedBeerImage(event)">
                     <img class="col-sm-3" alt="Preview of image" id="preview">
                     <input type="hidden" name="id" value="{{$beerId}}">
@@ -41,9 +41,9 @@
         </div>
     </div>
     <script>
-        var previewUploadedBeerImage = function (event) {
-            var image = event.target.files[0];
-            var output = document.getElementById('preview');
+        let previewUploadedBeerImage = function (event) {
+            let image = event.target.files[0];
+            let output = document.getElementById('preview');
             output.src = URL.createObjectURL(image);
         };
     </script>
