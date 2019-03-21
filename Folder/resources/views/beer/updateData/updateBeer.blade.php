@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'Update '.$beer->name)
 @section('content')
     <h1>Update beer: {{ $beer->name }}</h1>
     @if (count($errors) > 0)

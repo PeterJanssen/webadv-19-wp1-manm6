@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'All available beers')
 @section('content')
     @if(Session::has('info'))
         <div class="row">
