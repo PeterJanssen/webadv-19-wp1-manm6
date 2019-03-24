@@ -15,13 +15,19 @@ Laravel heeft hiertegen ingebouwde bescherming, in de vorm van de TokenMismatchE
 ![alt text][img_tokenMismatchException]
 
 Wanneer we een webpagina opvragen van een Laravel-webapplicatie, stuurt de server naast de 
-view voor de opgevraagde webpagina in respons-body ook een CSRF-token mee, die moet 
-teruggezonden worden aan de server, bij een volgend request aan de server. Indien de token
+view voor de opgevraagde webpagina in de respons-body ook een CSRF-token mee, die moet 
+teruggezonden worden aan de server, bij een volgend request. Indien de token
 niet wordt teruggezonden aan de server, zal de server de request weigeren.
 Dit kunnen we in Laravel realiseren, door een method call naar csrf_field() binnen de 'form'
 HTML tags:
 
 ![alt text][img_CSRFSolution]
+
+In onze applicatie staan deze bijvoorbeeld in de formulieren in de updateBeer.blade.php view:
+
+![alt text][img_updateBeer]
+
+[HIER KOMEN DE NOG OVERIGE VOORBEELDEN VAN csrf_field()]
 
 ### Troubleshoot
 #### unserialize(): Error at offset 0 of 40 bytes
@@ -53,3 +59,4 @@ Yusuf Destan, Peter Janssen, Ben Merken & Sander Vlayen @ Hogeschool PXL, Hassel
 [img_cipherExceptionSolution]:Images/cipherExceptionSolution.PNG
 [img_tokenMismatchException]:Images/tokenMismatchException.PNG
 [img_CSRFSolution]:Images/CSRFSolution.PNG
+[img_updateBeer]:Images/updateBeer.PNG
