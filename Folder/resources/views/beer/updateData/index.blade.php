@@ -12,9 +12,9 @@
     <div class="row">
         <div class="col-md-12">
             @foreach($beers as $beer)
-                <figure class="col-md-4">
-                    <img class="img-fluid" width="300px" height="275px" src="data:image/jpg;base64,{{$beer->image_file}}" alt={{ $beer->name }}>
-                    <p><strong>{{ $beer ->name }}</strong>
+                <figure class="col-md-4 thumbnail">
+                    <img width="300px" height="275px" src="data:image/jpg;base64,{{$beer->image_base64_uri}}" alt={{ $beer->name }}>
+                    <p class="caption"><strong>{{ $beer ->name }}</strong>
                         <a href="{{ route('updateData.updateBeer', ['id' => $beer->id]) }}">Edit</a>
                 </figure>
             @endforeach

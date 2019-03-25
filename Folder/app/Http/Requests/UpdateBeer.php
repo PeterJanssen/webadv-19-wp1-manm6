@@ -28,7 +28,7 @@ class UpdateBeer extends FormRequest
             'description' => 'required|min:10|string',
             'price' => 'required|min:0|numeric',
             'alcohol' => 'required|min:0|numeric|max:99',
-            'image_file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image_base64_uri' => 'image|mimes:jpeg,jpg|max:2048',
         ];
     }
 }

@@ -19,7 +19,7 @@ class CreateBeersTable1 extends Migration
             $table->text('description');
             $table->double('price');
             $table->double('alcohol');
-            $table->binary('image_file');
+            $table->binary('image_base64_uri');
             $table->timestamps();
         });
     }

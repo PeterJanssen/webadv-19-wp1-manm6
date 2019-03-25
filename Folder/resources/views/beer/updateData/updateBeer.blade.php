@@ -1,19 +1,8 @@
 @extends('layouts.master')
-@section('title', 'Update '.$beer->name)
+@section('title', $beer->name.' update form')
 @section('content')
     <h1>Update beer: {{ $beer->name }}</h1>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Alert</strong>
-            <hr>
-            Please check if your input follows these rules.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('partials.errors')
     <div class="row">
         <div class="col-md-12">
             <form action="{{ route('Confirm update') }}" method="post" enctype="multipart/form-data">
@@ -30,7 +19,7 @@
                     <input type="text" class="form-control" id="alcohol" name="alcohol"
                            value="{{ $beer->alcohol }}">
                     <label for="image">Beer image</label>
-                    <input data-preview="#preview" name="image_file" type="file" id="image_file"
+                    <input data-preview="#preview" name="image_file" type="file" id="image"
                            onchange="previewUploadedBeerImage(event)">
                     <img class="col-sm-3" alt="Preview of image" id="preview">
                     <input type="hidden" name="id" value="{{$beerId}}">

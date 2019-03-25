@@ -36,12 +36,12 @@ Route::group(['prefix' => 'beer'], function () {
     })->name('deleteData.index');
 
     //Routes to use when updating a beer
-    Route::get('Update existing beers', [
+    Route::get('existing beers', [
         'uses' => 'BeerUpdateController@getBeersToUpdate',
         'as' => 'updateData.index'
     ]);
 
-    Route::get('Update existing beer/{id}', [
+    Route::get('update form/{id}', [
         'uses' => 'BeerUpdateController@getBeerToEdit',
         'as' => 'updateData.updateBeer'
     ]);
