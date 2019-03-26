@@ -29,6 +29,43 @@ In onze applicatie staan deze bijvoorbeeld in de formulieren in de updateBeer.bl
 
 [HIER KOMEN DE NOG OVERIGE VOORBEELDEN VAN csrf_field()]
 
+### Aanmaken database
+Voor dit project maken wij gebruik van een database met bieren in.
+ 
+Deze database bevat één tabel die we aanmaken in de migrations folder van het project onder de folder database.
+
+![alt text][img_migration]
+
+Deze tabel wordt ook geseed met dummy data in de seeds folder van het project onder de folder database.
+
+![alt text][img_seed] 
+ 
+Voor deze database aan te maken doen we het volgende in een server.
+
+Log in de mysql server met een login en ww en voer het volgende commando uit.
+
+![alt text][img_database aanmaken]
+
+Met dit commando creëren we een database met een naam bv. beerDB.
+
+Hierna moeten we de .env file aanpassen in het project. Hierin moeten we verwijzen naar welke database we gaan gebruiken en waar deze zich bevindt. 
+Deze .env kan nog niet bestaan maar bij het aanmaken van het project maakt Laravel een .env.example aan.
+Kopieer deze en hernoem ze naar .env. En maak hier de volgende aanpassingen aan (gebruik de database naam die je daarnet meegegeven hebt bij het creëren ervan, poort, username en wachtwoord kunnen verschillen).
+
+![alt text][img_env]
+
+Als dit allemaal gedaan is maken we de tabel aan en inserten we de dummy data met het volgende commando in de server.
+
+![alt text][img_creer database]
+
+Deze tabel ziet er in mysql als volgt uit.
+
+![alt text][img_tabel]
+
+En bevat volgende data (de uri bevat zeer lange strings die we niet kunnen tonen, deze uri's worden later gebruik voor de images te weergeven in de html).
+
+![alt text][img_tabelContent]
+
 ### Troubleshoot
 #### unserialize(): Error at offset 0 of 40 bytes
 Als je ooit de volgende foutmelding krijgt:
