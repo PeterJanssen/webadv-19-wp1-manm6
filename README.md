@@ -3,32 +3,6 @@
 
 ### Uitleg uitwerking
 
-#### Beveiliging tegen CSRF-aanvallen
-Cross-Site Request Forgery, of CSRF-aanvallen, kunnen optreden, wannneer een gebruiker
-op een gemanipuleerde URL klikt, wanneer de gebruiker een sessie met de server heeft opgezet. 
-Denk bijvoorbeeld aan een link naar een banking app, waarbij een geldtransactie wordt
-doorgespeeld van het saldo van de gebruiker naar de rekening van diegene die de gemanipuleerde
-URL heeft doogespeeld. Dit is allemaal mogelijk, omdat de gebruiker een vertrouwde sessie met
-de server heeft opgezet.
-Laravel heeft hiertegen ingebouwde bescherming, in de vorm van de TokenMismatchException:
-
-![alt text][img_tokenMismatchException]
-
-Wanneer we een webpagina opvragen van een Laravel-webapplicatie, stuurt de server naast de 
-view voor de opgevraagde webpagina in de respons-body ook een CSRF-token mee, die moet 
-teruggezonden worden aan de server, bij een volgend request. Indien de token
-niet wordt teruggezonden aan de server, zal de server de request weigeren.
-Dit kunnen we in Laravel realiseren, door een method call naar csrf_field() binnen de 'form'
-HTML tags:
-
-![alt text][img_CSRFSolution]
-
-In onze applicatie staan deze bijvoorbeeld in de formulieren in de updateBeer.blade.php view:
-
-![alt text][img_updateBeer]
-
-[HIER KOMEN DE NOG OVERIGE VOORBEELDEN VAN csrf_field()]
-
 ### Aanmaken database
 Voor dit project maken wij gebruik van een database met bieren in.
  
@@ -66,6 +40,63 @@ En bevat volgende data (de uri bevat zeer lange strings die we niet kunnen tonen
 
 ![alt text][img_tabelContent]
 
+#### Beveiliging tegen SQL-injectie
+
+SQL-injectie aanvallen kunnen voorkomen, wanneer input in online formulieren niet wordt gefilterd.
+Wanneer je strings die een gebruiker als input geeft rechtstreeks naar je databank verzendt (denk
+bijvoorbeeld aan "DROP TABLE [naam];"): 
+
+![alt text][img_sqlInjection]
+
+Stel je je applicatie bloot aan een aanval. Om je best te
+bewapenen tegen SQL-injectie, kun je, indien je queries gebruikt in je backend, er best voor zorgen 
+dat je SQL queries in de backend gebruikmaken van parameters, zodat de input eerst wordt omgezet in
+string-literals, die dan , zodat de interne logica van de input niet wordt gecontroleerd:
+
+![alt text][img_sqlInjectionPrevention]
+
+De Object Relational Mapper (ORM) van Laravel, Eloquent, gebruikt PHP Data Object (PDO) intern parameter
+binding om SQL-injectie in te dammen. Allen zijn valide mogelijkheden om SQL-injectie tegen te gaan. 
+Wij hebben ervoor gekozen de input van formulieren om objecten te maken van klassen in de backend,
+die de records weerspiegelen in onze database, en 
+
+Om bijvoorbeeld een specifiek bier te wijzigen in de database, geeft de gebruiker de informatie in
+in de velden van het invulformulier, en klikt op "Submit":
+
+![alt text][img_updateBeerForm]
+
+Vervolgens worden de velden opgezet naar nieuwe properties van een bestaand bierobject, dat daarna
+wordt opgeslagen in de databank:
+
+![alt text][img_updateBeerProperties1]
+![alt text][img_updateBeerProperties2]
+
+Dit alles wordt verwezenlijkt met de interne SQL-injectie preventie van Laravels Eloquent ORM.
+
+#### Beveiliging tegen CSRF-aanvallen
+Cross-Site Request Forgery, of CSRF-aanvallen, kunnen optreden, wannneer een gebruiker
+op een gemanipuleerde URL klikt, wanneer de gebruiker een sessie met de server heeft opgezet. 
+Denk bijvoorbeeld aan een link naar een banking app, waarbij een geldtransactie wordt
+doorgespeeld van het saldo van de gebruiker naar de rekening van diegene die de gemanipuleerde
+URL heeft doogespeeld. Dit is allemaal mogelijk, omdat de gebruiker een vertrouwde sessie met
+de server heeft opgezet.
+Laravel heeft hiertegen ingebouwde bescherming, in de vorm van de TokenMismatchException:
+
+![alt text][img_tokenMismatchException]
+
+Wanneer we een webpagina opvragen van een Laravel-webapplicatie, stuurt de server naast de 
+view voor de opgevraagde webpagina in de respons-body ook een CSRF-token mee, die moet 
+teruggezonden worden aan de server, bij een volgend request. Indien de token
+niet wordt teruggezonden aan de server, zal de server de request weigeren.
+Dit kunnen we in Laravel realiseren, door een method call naar csrf_field() binnen de 'form'
+HTML tags:
+
+![alt text][img_CSRFSolution]
+
+In onze applicatie staan deze bijvoorbeeld in de formulieren in de updateBeer.blade.php view:
+
+![alt text][img_updateBeer]
+
 ### Troubleshoot
 #### unserialize(): Error at offset 0 of 40 bytes
 Als je ooit de volgende foutmelding krijgt:
@@ -93,10 +124,15 @@ Yusuf Destan, Peter Janssen, Ben Merken & Sander Vlayen @ Hogeschool PXL, Hassel
 
 [img_unserializeException]:Images/unserializeException.PNG "unsezialize Exception"
 [img_cipherException]:Images/cipherException.PNG "cipher Exception"
-[img_cipherExceptionSolution]:Images/cipherExceptionSolution.PNG
-[img_tokenMismatchException]:Images/tokenMismatchException.PNG
-[img_CSRFSolution]:Images/CSRFSolution.PNG
-[img_updateBeer]:Images/updateBeer.PNG
+[img_cipherExceptionSolution]:Images/cipherExceptionSolution.PNG "cipher Exception solution"
+[img_tokenMismatchException]:Images/tokenMismatchException.PNG "tokenMismatchException"
+[img_CSRFSolution]:Images/CSRFSolution.PNG "CSRF solution"
+[img_updateBeer]:Images/updateBeer.PNG "updateBeer.blade.php"
+[img_sqlInjection]:Images/sqlInjection.PNG "SQL-injecton"
+[img_sqlInjectionPrevention]:Images/sqlInjectionPrevention.PNG "SQL- injection prevention"
+[img_updateBeerForm]:Images/updateBeerForm.PNG "update beer form"
+[img_updateBeerProperties1]:Images/updateBeerProperties1.PNG "update beer properties"
+[img_updateBeerProperties2]:Images/updateBeerProperties2.PNG "update beer properties"
 [img_migration]:Images/migration.PNG
 [img_seed]:Images/seed.PNG
 [img_database aanmaken]:Images/database%20aanmaken.PNG
