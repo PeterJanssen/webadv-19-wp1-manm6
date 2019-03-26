@@ -1,7 +1,7 @@
 <style>
     .clear {
         clear: both;
-        height: 30px;
+        height: 60px;
     }
 </style>
 <div class="clear"></div>

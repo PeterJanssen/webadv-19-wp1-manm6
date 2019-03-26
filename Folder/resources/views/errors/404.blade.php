@@ -14,12 +14,12 @@
             <div class="title">Sorry, this page does not exist.</div>
             <img class="img-thumbnail" src="{{ URL::to('/images/broken beer bottle.jpg') }}">
         </div>
+    </div>
+    <div class="row">
         <div class="col-md-12 returnHome">
             <a href="{{ route(('home')) }}">Return home</a>
         </div>
     </div>
-
-
 </div>
 </body>
 </html>
