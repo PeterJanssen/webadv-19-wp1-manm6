@@ -11,49 +11,46 @@
 |
 */
 
-Route::get('/beer', function () {
-
-    $beer = DB::table('beers')->get();
-
-    return view('beer', ['beer' => $beer]);
-});
-
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::group(['prefix' => 'beer'], function () {
-    Route::get('', function () {
-        return view('beer.summaryData.index');
-    })->name('summaryData.index');
+Route::group(['prefix' => 'beers'], function () {
 
-    Route::get('add', function () {
-        return view('beer.addData.index');
-    })->name('addData.index');
-
-    Route::get('delete', function () {
-        return view('beer.deleteData.index');
-    })->name('deleteData.index');
-
-    //Routes to use when updating a beer
-    Route::get('existing beers', [
-        'uses' => 'BeerUpdateController@getBeersToUpdate',
-        'as' => 'updateData.index'
+    Route::get('', [
+        'uses' => 'BeerSummaryController@getIndex',
+        'as' => 'summaryData.index'
     ]);
 
-    Route::get('update form/{id}', [
-        'uses' => 'BeerUpdateController@getBeerToEdit',
-        'as' => 'updateData.updateBeer'
+    Route::get('{id}', [
+        'uses' => 'BeerSummaryController@getBeer',
+        'as' => 'summaryData.detail'
     ]);
-
-    Route::post('Posting new beer', [
-        'uses' => 'BeerUpdateController@postUpdatedBeer',
-        'as' => 'Confirm update'
-    ]);
-    //End of routes to use when updating a beer
 });
 
+Route::get('add', function () {
+    return view('beer.addData.index');
+})->name('addData.index');
 
+Route::get('delete', function () {
+    return view('beer.deleteData.index');
+})->name('deleteData.index');
+
+//Routes to use when updating a beer
+Route::get('existing_beers', [
+    'uses' => 'BeerUpdateController@getBeersToUpdate',
+    'as' => 'updateData.index'
+]);
+
+Route::get('update_form/{id}', [
+    'uses' => 'BeerUpdateController@getBeerToEdit',
+    'as' => 'updateData.updateBeer'
+]);
+
+Route::post('Posting_new_beer', [
+    'uses' => 'BeerUpdateController@postUpdatedBeer',
+    'as' => 'Confirm update'
+]);
 
 
 
