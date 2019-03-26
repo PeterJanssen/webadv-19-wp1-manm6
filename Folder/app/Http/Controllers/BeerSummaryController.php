@@ -15,17 +15,14 @@ class BeerSummaryController extends Controller
 {
     public function getIndex()
     {
-        $beers = Beer::query()
-            ->orderBy('name', 'asc')
-            ->paginate(6);
+        $beers = Beer::getAllBeers()->paginate(6);
 
         return view('beer.summaryData.index', ['beers' => $beers]);
     }
 
     public function getBeer($id)
     {
-        $beer = Beer::query()
-            ->find($id);
+        $beer = Beer::getABeer($id);
 
         return view('beer.summaryData.detail', ['beer' => $beer]);
     }
