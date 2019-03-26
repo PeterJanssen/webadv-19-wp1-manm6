@@ -97,3 +97,10 @@ Yusuf Destan, Peter Janssen, Ben Merken & Sander Vlayen @ Hogeschool PXL, Hassel
 [img_tokenMismatchException]:Images/tokenMismatchException.PNG
 [img_CSRFSolution]:Images/CSRFSolution.PNG
 [img_updateBeer]:Images/updateBeer.PNG
+[img_migration]:Images/migration.PNG
+[img_seed]:Images/seed.PNG
+[img_database aanmaken]:Images/database%20aanmaken.PNG
+[img_env]:Images/env.PNG
+[img_creer database]:Images/creer%20database.PNG
+[img_tabel]:Images/tabel.PNG
+[img_tabelContent]:Images/tabelContent.PNG
