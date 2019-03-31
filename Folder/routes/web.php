@@ -52,6 +52,14 @@ Route::post('Posting_new_beer', [
     'as' => 'Confirm update'
 ]);
 
+//routes when adding a beer
+Route::post('Posting_add_beer', [
+    'uses' => 'BeerAddController@postAddBeer',
+    'as' => 'Posting_add_beer'
+]);
+
+
+
 
 
 
