@@ -34,7 +34,7 @@ class BeerAddController extends Controller
 
         $beer->save();
 
-        return redirect()->route('addData.index')->with($beer->name. ' is added to db');
+        return redirect()->route('addData.index')->with('success',$beer->name. ' is added to db');
 
 
     }
