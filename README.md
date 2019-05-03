@@ -97,6 +97,26 @@ In onze applicatie staan deze bijvoorbeeld in de formulieren in de updateBeer.bl
 
 ![alt text][img_updateBeer]
 
+### Clean code seminarie
+#### PHPMD
+PHPMD kan gebruikt worden om de code "clean" te houden. Download de .phar file van de officiële
+PHPMD website:
+
+![alt text][img_phpmdsite]
+
+Zet deze phpmd.phar file in de root-folder van het project:
+
+![alt text][img_phpmdpharlocation]
+
+Navigeer vervolgens naar de folder waar het phpmd.phar archief staat, en open hier een prompt.
+
+![alt text][img_phpmdcommands]
+
+Aldus wordt in de "working directory" een HTML-bestand gegenereerd met alle problemen die PHPMD heeft gevonden.
+Hier kan je naar navigeren in je browser:
+
+![alt text][img_phpmdreport]
+
 ### Troubleshoot
 #### unserialize(): Error at offset 0 of 40 bytes
 Als je ooit de volgende foutmelding krijgt:
@@ -140,3 +160,6 @@ Yusuf Destan, Peter Janssen, Ben Merken & Sander Vlayen @ Hogeschool PXL, Hassel
 [img_creer database]:Images/creer%20database.PNG
 [img_tabel]:Images/tabel.PNG
 [img_tabelContent]:Images/tabelContent.PNG
+[img_phpmdsite]:Images/phpmdsite.PNG "PHPMD site"
+[img_phpmdcommands]:Images/phpmdcommands.PNG "PHPMD commands"
+[img_phpmdreport]: Images/phpmdreport.PNG "PHPMD report"
