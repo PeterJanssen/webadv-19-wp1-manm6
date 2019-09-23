@@ -140,7 +140,7 @@ voer volgende twee commando's uit in de root folder van de je Laravel project:
 
 ### Credits
 
-Yusuf Destan, Peter Janssen, Ben Merken & Sander Vlayen @ Hogeschool PXL, Hasselt, 2019.
+Yusuf Destan, Peter Janssen & Ben Merken @ Hogeschool PXL, Hasselt, 2019.
 
 [img_unserializeException]:Images/unserializeException.PNG "unsezialize Exception"
 [img_cipherException]:Images/cipherException.PNG "cipher Exception"
